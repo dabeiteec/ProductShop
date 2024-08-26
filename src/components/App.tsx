@@ -1,15 +1,12 @@
-import { useState,useEffect,useRef } from 'react'
 import {Layout} from './Layout'
 
 const App:React.FC=()=> {
-  const [login, setLogin] = useState('');
-
   return (
-   <div>
+  <div>
     <Layout>
-      
+
     </Layout>
-   </div>
+  </div>
   )
 }
 
