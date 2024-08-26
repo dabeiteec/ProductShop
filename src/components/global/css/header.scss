@@ -1,0 +1,12 @@
+.header {
+    @apply flex items-center justify-between p-4 bg-white ;
+}
+.logo {
+    @apply text-3xl font-serif text-green-700;
+}
+.nav {
+    @apply flex space-x-8 text-lg;
+    
+}
+
+
