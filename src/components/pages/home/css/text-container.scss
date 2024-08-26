@@ -1,0 +1,9 @@
+.text-container {
+    @apply max-w-3xl mx-auto p-8;
+}
+.text-container h3 {
+    @apply text-xs font-bold tracking-wide text-left text-gray-700 uppercase;
+}
+.text-container .about_product {
+    @apply mt-4 text-lg text-left text-gray-900 space-y-4;
+}
