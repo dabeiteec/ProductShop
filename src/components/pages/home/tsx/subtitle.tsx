@@ -1,6 +1,7 @@
 import React from "react";
 import '../../../global/css/button.scss'
 import '../css/subtitle.scss'
+import {ShopPage} from'../../shop/shop'
 
 export const Subtitle:React.FC=()=> {
     return (
@@ -8,9 +9,9 @@ export const Subtitle:React.FC=()=> {
             <h1 className="subtitle-text">
             We’re farmers, purveyors, and eaters of organically grown food.
             </h1>
-            <button className="green-button">
+            <a href={<ShopPage/>} className="green-button">
                 Browse our shop
-            </button>
+            </a>
         </div>
     );
 }
