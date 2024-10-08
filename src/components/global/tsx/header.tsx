@@ -10,6 +10,8 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<string>(location.pathname);
 
+  const headerLabels=['Shop','Who we are','Newstand','My Profile','Basket']
+  ;
   const handleClick = (tab: string) => {
     setActiveTab(tab);
   };
@@ -19,41 +21,36 @@ export const Header: React.FC = () => {
       <div className="logo">World Peas</div>
       <nav className="nav">
         <NavButton
-          label="Shop"
+          label={headerLabels[0]}
           to="/shop"
           isActive={activeTab === '/shop'}
           onClick={() => handleClick('/shop')}
         />
         <NavButton
-          label="Who we are"
+          label={headerLabels[1]}
           to="/"
           isActive={activeTab === '/'}
           onClick={() => handleClick('/')}
         />
         <NavButton
-          label="Newstand"
+          label={headerLabels[2]}
           to="/news"
           isActive={activeTab === '/news'}
           onClick={() => handleClick('/news')}
         />
         <NavButton
-          label="My profile"
+          label={headerLabels[3]}
           to="/profile"
           isActive={activeTab === '/profile'}
           onClick={() => handleClick('/profile')}
         />
         <NavButton
-          label="Basket"
+          label={headerLabels[4]}
           to="/basket"
           isActive={activeTab === '/basket'}
           onClick={() => handleClick('/basket')}
         />
       </nav>
-      <Routes>
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/basket" element={<BasketPage />} />
-      </Routes>
     </header>
   );
 };
