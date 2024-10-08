@@ -14,15 +14,14 @@ export const ShopCard: React.FC<ShopCardProps> = ({
     productImg,
     productFrom,
 }) => {
-    
+    console.log(productName,productImg)
     return (
         <section className="p-4 bg-white rounded-lg shadow-md max-w-xs relative">
         <div className="produce-card">
-            {/* Используем путь к изображению напрямую из JSON */}
             <img
             className="w-full h-48 object-cover rounded-t-lg"
             alt={productName}
-            src={productImg} // Используем путь как есть, если изображения в папке public
+            src={productImg} 
             />
             <div className="p-4">
             <div className="mb-2">

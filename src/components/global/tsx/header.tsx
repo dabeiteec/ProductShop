@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { NavButton } from './nav-button';
 import '../css/header.scss';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { HomePage } from '../../pages/home/home';
+import { ShopPage } from '../../pages/shop/shop';
+import { BasketPage } from '../../pages/basket/basket';
 
 export const Header: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('Basket');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState<string>(location.pathname);
 
   const handleClick = (tab: string) => {
     setActiveTab(tab);
@@ -11,36 +16,44 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header h-[100px]">
-      <div className="logo">
-        World Peas
-      </div>
+      <div className="logo">World Peas</div>
       <nav className="nav">
         <NavButton
           label="Shop"
-          isActive={activeTab === 'Shop'}
-          onClick={() => handleClick('Shop')}
-        />
-        <NavButton
-          label="Newstand"
-          isActive={activeTab === 'Newstand'}
-          onClick={() => handleClick('Newstand')}
+          to="/shop"
+          isActive={activeTab === '/shop'}
+          onClick={() => handleClick('/shop')}
         />
         <NavButton
           label="Who we are"
-          isActive={activeTab === 'Who we are'}
-          onClick={() => handleClick('Who we are')}
+          to="/"
+          isActive={activeTab === '/'}
+          onClick={() => handleClick('/')}
+        />
+        <NavButton
+          label="Newstand"
+          to="/news"
+          isActive={activeTab === '/news'}
+          onClick={() => handleClick('/news')}
         />
         <NavButton
           label="My profile"
-          isActive={activeTab === 'My profile'}
-          onClick={() => handleClick('My profile')}
+          to="/profile"
+          isActive={activeTab === '/profile'}
+          onClick={() => handleClick('/profile')}
         />
         <NavButton
           label="Basket"
-          isActive={activeTab === 'Basket'}
-          onClick={() => handleClick('Basket')}
+          to="/basket"
+          isActive={activeTab === '/basket'}
+          onClick={() => handleClick('/basket')}
         />
       </nav>
+      <Routes>
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/basket" element={<BasketPage />} />
+      </Routes>
     </header>
   );
-}
+};
