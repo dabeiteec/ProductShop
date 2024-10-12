@@ -1,4 +1,4 @@
-// import { useState,useEffect,useRef } from 'react'
+import { NotFound } from './pages/NotFound/not-found-page';
 import { Header } from './global/tsx/header';
 import { HomePage } from './pages/home/home';
 import {ShopPage } from './pages/shop/shop';
@@ -12,6 +12,7 @@ export const Layout:React.FC=()=> {
           <Routes>
 
             <Route path="/" element = {<HomePage />} />
+            <Route path = "/notFound" element = {<NotFound/>}/>
             <Route path="/shop" element = {<ShopPage />} />
             <Route path="/basket" element = {<BasketPage/>}/>
           </Routes>

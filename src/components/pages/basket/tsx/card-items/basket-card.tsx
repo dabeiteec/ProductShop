@@ -17,16 +17,17 @@ export const BasketCard: React.FC<ShopCardProps> = ({
 }) => {
     const [productQuantity, setProductQuantity] = useState(1);
 
+    // Функция для расчёта итоговой цены
     const calculateFinalPrice = () => {
         return (productPrice * productQuantity).toFixed(2);
     };
 
+    // Обработчик изменения количества
     const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(event.target.value);
         if (value > 0) {
             setProductQuantity(value);
         }
-        else return 0
     };
 
     return (
@@ -48,7 +49,7 @@ export const BasketCard: React.FC<ShopCardProps> = ({
                     </div>
                 </div>
             </div>
-            <div className="text-right mr-10">
+            <div className="text-right mr-8"> 
                 <span className="block text-lg font-semibold text-black">${calculateFinalPrice()}</span>
                 <div className="flex items-center mt-2 text-sm bg-gray-100 p-2 rounded-md">
                     <input
@@ -61,7 +62,7 @@ export const BasketCard: React.FC<ShopCardProps> = ({
                     <FaPen className="ml-2" />
                 </div>
             </div>
-            <button className="absolute top-2 right-2 bg-green-600 p-2 rounded-full text-gray-800 hover:bg-gren-700">
+            <button className="absolute top-2 right-2 bg-green-600 p-2 rounded-full text-gray-100 hover:bg-green-700">
                 <FaMinus />
             </button>
         </section>
