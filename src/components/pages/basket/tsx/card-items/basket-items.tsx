@@ -1,13 +1,13 @@
 import React from "react";
-import{ShopCard} from './card'
-import database from '../../../../types/database.js'
+import{ BasketCard } from './basket-card.js'
+import database from '../../../../../types/database.js'
 
-export const ShopMain: React.FC = () => {
+export const BasketItems: React.FC = () => {
     
     return (
-        <section className="container mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <section className="produce-subtitle container mx-auto  flex flex-col gap-6 p-4">
             {Object.keys(database).map((key) => (
-                <ShopCard
+                <BasketCard
                     key={key}
                     productName={database[key].name}
                     productPrice={database[key].price}

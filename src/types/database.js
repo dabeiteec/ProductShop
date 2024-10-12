@@ -4,7 +4,7 @@ import strawberry from '../components/global/assets/strawberry.svg'
 import ginger from '../components/global/assets/ginger.svg'
 
 
-const product={
+const product = {
     tomato:{
         price:5.99,name:"Heirloom Tomato",img:tomato,
         description:"Grown in San Juan Capistrano, CA",produceDate:""},
@@ -18,5 +18,6 @@ const product={
         price:6.99,name:"Heirloom Strawberry",img:strawberry,
         description:"Grown in San Juan Capistrano, CA",produceDate:""}
 }
+
 
 export default product
