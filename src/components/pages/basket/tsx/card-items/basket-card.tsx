@@ -7,6 +7,7 @@ interface ShopCardProps {
     productPrice: number;
     productImg: string;
     productFrom: string;
+    onRemove: (productName: string) => void; // Добавляем функцию для удаления
 }
 
 export const BasketCard: React.FC<ShopCardProps> = ({
@@ -14,6 +15,7 @@ export const BasketCard: React.FC<ShopCardProps> = ({
     productPrice,
     productImg,
     productFrom,
+    onRemove,
 }) => {
     const [productQuantity, setProductQuantity] = useState(1);
 
@@ -28,6 +30,11 @@ export const BasketCard: React.FC<ShopCardProps> = ({
         if (value > 0) {
             setProductQuantity(value);
         }
+    };
+
+    // Обработчик удаления продукта
+    const handleRemove = () => {
+        onRemove(productName); // Вызываем функцию удаления
     };
 
     return (
@@ -62,7 +69,10 @@ export const BasketCard: React.FC<ShopCardProps> = ({
                     <FaPen className="ml-2" />
                 </div>
             </div>
-            <button className="absolute top-2 right-2 bg-green-600 p-2 rounded-full text-gray-100 hover:bg-green-700">
+            <button
+                className="absolute top-2 right-2 bg-red-600 p-2 rounded-full text-gray-100 hover:bg-red-700"
+                onClick={handleRemove} // Обработчик удаления при клике
+            >
                 <FaMinus />
             </button>
         </section>
