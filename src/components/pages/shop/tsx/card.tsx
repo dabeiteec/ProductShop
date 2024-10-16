@@ -14,18 +14,13 @@ export const ShopCard: React.FC<ShopCardProps> = ({
     productImg,
     productFrom,
 }) => {
-    const [cart, setCart] = useState(() => {
-        // Получаем начальное значение корзины из LocalStorage
-        const savedCart = localStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
+    const [cart, setCart] = useState(() => {const savedCart = localStorage.getItem('cart');
+        return savedCart ? JSON.parse(savedCart) : [];});
 
     useEffect(() => {
-        // Сохраняем корзину в LocalStorage каждый раз, когда она изменяется
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
-    // Функция для добавления продукта в корзину
     const addToCart = () => {
         const newProduct = {
             productName,
@@ -40,7 +35,7 @@ export const ShopCard: React.FC<ShopCardProps> = ({
         if (!isProductInCart) {
             setCart((prevCart) => [...prevCart, newProduct]);
         } else {
-            alert('Этот продукт уже в корзине!'); // или любое другое сообщение
+            alert('Этот продукт уже в корзине!'); 
         }
     };
 

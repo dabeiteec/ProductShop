@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BasketCard } from './basket-card.js';
 
-// Определяем интерфейс для продукта
 interface Product {
     productName: string;
     productPrice: number;
@@ -10,7 +9,7 @@ interface Product {
 }
 
 export const BasketItems: React.FC = () => {
-    const [cart, setCart] = useState<Product[]>([]); // Указываем тип состояния как массив Product
+    const [cart, setCart] = useState<Product[]>([]); 
 
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
@@ -19,23 +18,21 @@ export const BasketItems: React.FC = () => {
         }
     }, []);
 
-    // Функция для удаления продукта из корзины
     const handleRemoveProduct = (productName: string) => {
         const updatedCart = cart.filter(product => product.productName !== productName);
         setCart(updatedCart);
-        localStorage.setItem('cart', JSON.stringify(updatedCart)); // Сохраняем обновлённую корзину в LocalStorage
+        localStorage.setItem('cart', JSON.stringify(updatedCart)); 
     };
 
     return (
         <section className="produce-subtitle container mx-auto flex flex-col gap-6 p-4">
             {cart.map((product) => (
                 <BasketCard
-                    key={product.productName} // Используем productName как уникальный ключ
+                    key={product.productName} 
                     productName={product.productName}
                     productPrice={product.productPrice}
                     productImg={product.productImg} 
-                    productFrom={product.productFrom}
-                    onRemove={handleRemoveProduct} // Передаём функцию удаления
+                    onRemove={handleRemoveProduct}
                 />
             ))}
         </section>
