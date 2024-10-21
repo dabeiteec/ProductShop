@@ -9,8 +9,8 @@ export const Layout:React.FC=()=> {
   return (
     <div>
           <Header/>
+          
           <Routes>
-
             <Route path="/" element = {<HomePage />} />
             <Route path = "/notFound" element = {<NotFound/>}/>
             <Route path="/shop" element = {<ShopPage />} />

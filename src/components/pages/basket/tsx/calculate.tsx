@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const OrderSummary = () => {
+export const OrderSummary:React.FC = () => {
     return (
         <div className="bg-white rounded-lg shadow-md p-6 max-w-sm">
             <h2 className="text-lg font-semibold mb-4">Order summary</h2>
