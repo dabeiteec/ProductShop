@@ -1,9 +1,9 @@
 import React from "react";
-import '../css/text-container.scss';
+import styled from "styled-components";
 
 export const TextContainer: React.FC = () => {
   return (
-    <div className="text-container">
+    <Container>
       <h3>WHAT WE BELIEVE</h3>
       <div className="about_product">
         <p>We believe in produce. Tasty produce. Produce like:</p>
@@ -27,6 +27,29 @@ export const TextContainer: React.FC = () => {
           escaroles are...
         </p>
       </div>
-    </div>
+    </Container>
   );
-}
+};
+
+const Container = styled.div`
+  max-width: 768px; /* max-w-3xl */
+  margin: 0 auto; /* mx-auto */
+  padding: 2rem; /* p-8 */
+
+  h3 {
+    font-size: 0.75rem; /* text-xs */
+    font-weight: bold; /* font-bold */
+    letter-spacing: 0.05em; /* tracking-wide */
+    text-align: left; /* text-left */
+    color: #4A4A4A; /* text-gray-700 */
+    text-transform: uppercase; /* uppercase */
+  }
+
+  .about_product {
+    margin-top: 1rem; /* mt-4 */
+    font-size: 1.125rem; /* text-lg */
+    text-align: left; /* text-left */
+    color: #333333; /* text-gray-900 */
+    line-height: 1.75; /* space-y-4 equivalent with line-height */
+  }
+`;

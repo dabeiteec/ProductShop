@@ -1,8 +1,8 @@
-import { NotFound } from './pages/NotFound/not-found-page';
-import { Header } from './global/tsx/header';
-import { HomePage } from './pages/home/home';
-import {ShopPage } from './pages/shop/shop';
-import { BasketPage } from './pages/basket/basket';
+import { NotFound } from '../../pages/not-found-page';
+import { Header } from '../../widgets/global/tsx/header';
+import { HomePage } from '../../pages/home-page';
+import {ShopPage } from '../../pages/shop-page';
+import { BasketPage } from '../../pages/basket-page';
 import { Route, Routes } from "react-router-dom";
   
 export const Layout:React.FC=()=> {

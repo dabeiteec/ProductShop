@@ -1,6 +1,6 @@
 import React from "react";
-import{ BasketItems } from './card-items/basket-items.js'
-import { OrderSummary } from "./calculate.js";
+import{ BasketItems } from '../../../entities/Basket/basket-items.js'
+import { OrderSummary } from "../../../features/Basket/calculate.js";
 
 export const BasketMain: React.FC = () => {
     

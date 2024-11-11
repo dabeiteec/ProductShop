@@ -1,6 +1,6 @@
 import React from "react";
-import { BasketSubtitle } from "./tsx/subtitle";
-import { BasketMain } from "./tsx/bask-main";
+import { BasketSubtitle } from "../widgets/pages/basket/subtitle";
+import { BasketMain } from "../widgets/pages/basket/bask-main";
 
 export const BasketPage: React.FC = () => {
     return (

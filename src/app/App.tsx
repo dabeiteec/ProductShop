@@ -1,4 +1,4 @@
-import {Layout} from './Layout'
+import { Layout } from './providers/layout'
 import { BrowserRouter } from 'react-router-dom'
 
 const App:React.FC=()=> {

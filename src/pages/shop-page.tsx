@@ -1,6 +1,6 @@
 import React from "react";
-import { ShopSubtitle } from "./tsx/subtitle";
-import { ShopMain } from "./tsx/shop-main";
+import { ShopSubtitle } from "../widgets/pages/shop/subtitle";
+import { ShopMain } from "../widgets/pages/shop/shop-main";
 
 export const ShopPage:React.FC = () =>{
     return (
