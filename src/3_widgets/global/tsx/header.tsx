@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { NavButton } from './nav-button';
-import '../css/header.scss';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { NavButton } from '../../../6_shared/nav-button';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 
 export const Header: React.FC = () => {
@@ -10,14 +10,15 @@ export const Header: React.FC = () => {
 
   const headerLabels = ['Shop','Who we are','Newstand','My Profile','Basket'];
   const headerLinks = ['/shop','/','/notFound','/basket']
+  
   const handleClick = (tab: string) => {
     setActiveTab(tab);
   };
 
   return (
-    <header className="header h-[100px]">
-      <div className="logo">World Peas</div>
-      <nav className="nav">
+    <StyledHeader className="header h-[100px]">
+      <Logo >World Peas</Logo>
+      <Navbar className="nav">
         <NavButton
           label={headerLabels[0]}
           to={headerLinks[0]}
@@ -31,16 +32,10 @@ export const Header: React.FC = () => {
           onClick={() => handleClick('/')}
         />
         <NavButton
-          label={headerLabels[2]}
-          to={headerLinks[2]}
-          isActive={activeTab === '/news'}
-          onClick={() => handleClick('/news')}
-        />
-        <NavButton
           label={headerLabels[3]}
           to={headerLinks[2]}
-          isActive={activeTab === '/profile'}
-          onClick={() => handleClick('/profile')}
+          isActive={activeTab === headerLinks[2]}
+          onClick={() => handleClick(headerLinks[2])}
         />
         <NavButton
           label={headerLabels[4]}
@@ -48,7 +43,26 @@ export const Header: React.FC = () => {
           isActive={activeTab === '/basket'}
           onClick={() => handleClick('/basket')}
         />
-      </nav>
-    </header>
+      </Navbar>
+    </StyledHeader>
   );
 };
+const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem; /* p-4 */
+  background-color: #ffffff; /* bg-white */
+`;
+
+const Logo = styled.header`
+  font-size: 1.875rem; /* text-3xl */
+  font-family: serif; /* font-serif */
+  color: #2f855a; /* text-green-700 */
+`;
+
+const Navbar = styled.header` 
+  display: flex;
+  gap: 2rem; /* space-x-8 */
+  font-size: 1.125rem; /* text-lg */
+`;

@@ -21,7 +21,7 @@ export const ImgContainer: React.FC = () => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 1rem; /* p-4 */
 `;
 

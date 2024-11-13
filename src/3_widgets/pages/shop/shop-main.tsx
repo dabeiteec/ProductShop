@@ -1,6 +1,6 @@
 import React from "react";
-import { ShopCard } from './card';
-import product from '../../../app/types/database.ts';
+import { ShopCard } from './card.tsx';
+import product from '../../../1_app/types/database.ts';
 import styled from "styled-components";
 
 export const ShopMain: React.FC = () => {

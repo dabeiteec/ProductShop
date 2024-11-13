@@ -1,5 +1,5 @@
 import { NotFound } from '../../pages/not-found-page';
-import { Header } from '../../widgets/global/tsx/header';
+import { Header } from '../../3_widgets/global/tsx/header';
 import { HomePage } from '../../pages/home-page';
 import {ShopPage } from '../../pages/shop-page';
 import { BasketPage } from '../../pages/basket-page';
