@@ -19,16 +19,16 @@ export const BasketMain: React.FC = () => {
 const Section = styled.section`
   display: flex;
   flex-direction: row;
-  gap: 1.5rem; /* Заменяет gap-6 */
-  padding: 1rem; /* Заменяет p-4 */
-  max-width: 1200px; /* Заменяет container */
+  gap: 1.5rem; 
+  padding: 1rem;
+  max-width: 1200px; 
   margin: 0 auto;
 `;
 
 const BasketContainer = styled.div`
-  flex: 3; /* Заменяет w-3/4 */
+  flex: 3;
 `;
 
 const SummaryContainer = styled.aside`
-  flex: 1; /* Заменяет w-1/4 */
+  flex: 1;
 `;

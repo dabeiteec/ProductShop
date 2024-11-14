@@ -1,10 +1,9 @@
-import onion from '../../widgets/global/assets/onion.svg'
-import tomato from '../../widgets/global/assets/tomato.svg'
-import strawberry from '../../widgets/global/assets/strawberry.svg'
-import ginger from '../../widgets/global/assets/ginger.svg'
+import onion from '../../3_widgets/global/assets/onion.svg'
+import tomato from '../../3_widgets/global/assets/tomato.svg'
+import strawberry from '../../3_widgets/global/assets/strawberry.jpg'
+import ginger from '../../3_widgets/global/assets/ginger.svg'
 
 
-// Объявляем product с индексной сигнатурой
 const product: { [key: string]: { price: number; name: string; img: string; description: string; produceDate: string; } } = {
     tomato: {
       price: 5.99,

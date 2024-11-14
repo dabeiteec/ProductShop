@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { ReactNode, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { RootState } from '../../6_shared/redux/redux-store';
 
 export const OrderSummary: React.FC = () => {
+
+  const getTotalPrice = useSelector((state: RootState) => state.arr.productsPrice);
+  const additionalExpenses = {
+    Tax:2,
+    Shipping:3.99,
+  }
+  const setTotal = getTotalPrice + additionalExpenses.Tax + additionalExpenses.Shipping;
+  const fixedPrice = setTotal.toFixed(2);
+  // useEffect(()=>{
+  //   setTotal.toFixed(2)
+  // })
+  // const fixedPrice = ;
   return (
     <Container>
       <Title>Order summary</Title>
       <SummaryRow>
         <span>Subtotal</span>
-        <span>$27.44</span>
+        <span>${getTotalPrice}</span>
       </SummaryRow>
       <SummaryRow>
         <span>Shipping</span>
-        <span>$3.99</span>
+        <span>${additionalExpenses.Shipping}</span>
       </SummaryRow>
       <SummaryRow>
         <span>Tax</span>
-        <span>$2.00</span>
+        <span>${additionalExpenses.Tax}</span>
       </SummaryRow>
       <TotalRow>
         <span>Total</span>
-        <span>$33.43</span>
+        <span>${fixedPrice}</span>
       </TotalRow>
       <ContinueButton>
         Continue to payment

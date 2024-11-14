@@ -1,5 +1,5 @@
 import React from "react";
-import { BasketSubtitle } from "../3_widgets/pages/basket/subtitle";
+import  BasketSubtitle  from "../3_widgets/pages/basket/subtitle";
 import { BasketMain } from "../3_widgets/pages/basket/bask-main";
 
 export const BasketPage: React.FC = () => {

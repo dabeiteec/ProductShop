@@ -73,11 +73,11 @@ const Button = styled.button`
 `;
 
 const ButtonDefault = styled(Button)`
-  background-color: #1e3a8a; 
+  background-color: #426B1F; 
   color: white;
 
   &:hover {
-    background-color: #2563eb; 
+    background-color: #5c9b25; 
   }
 `;
 

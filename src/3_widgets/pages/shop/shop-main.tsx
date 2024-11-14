@@ -1,5 +1,5 @@
 import React from "react";
-import { ShopCard } from './card.tsx';
+import { ShopCard } from '../../../4_entities/Shop/card.tsx';
 import product from '../../../1_app/types/database.ts';
 import styled from "styled-components";
 
@@ -26,6 +26,7 @@ const Section = styled.section`
   grid-template-columns: repeat(1, 1fr);
   gap: 2rem; 
   padding: 1rem;
+
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BasketCard } from './basket-card.js';
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import {RootState} from '../../6_shared/redux/redux-store'
 
 interface Product {
     productName: string;
@@ -11,6 +13,7 @@ interface Product {
 
 export const BasketItems: React.FC = () => {
     const [cart, setCart] = useState<Product[]>([]); 
+    const getProducts = useSelector((state:RootState) => state.arr.products);
 
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
@@ -27,7 +30,7 @@ export const BasketItems: React.FC = () => {
 
     return (
         <Container>
-          {cart.map((product) => (
+          {getProducts.map((product) => (
             <BasketCard
               key={product.productName}
               productName={product.productName}
@@ -40,13 +43,12 @@ export const BasketItems: React.FC = () => {
       );
     };
     
-    // Styled components
     
     const Container = styled.section`
-      max-width: 1200px; /* Заменяет mx-auto */
+      max-width: 1200px; 
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem; /* Заменяет gap-6 */
-      padding: 1rem; /* Заменяет p-4 */
+      gap: 1.5rem; 
+      padding: 1rem; 
     `;

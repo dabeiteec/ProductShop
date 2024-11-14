@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa6";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 interface ShopCardProps {
   productName: string;
@@ -26,7 +27,11 @@ export const ShopCard: React.FC<ShopCardProps> = ({
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [isAdded, setIsAdded] = useState(false); // Новый стейт для отслеживания анимации
+
+  const [isAdded, setIsAdded] = useState(false); 
+
+  const addProduct = useDispatch();
+  const setTotalPrice = useDispatch();
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -37,9 +42,15 @@ export const ShopCard: React.FC<ShopCardProps> = ({
     const isProductInCart = cart.some((product) => product.productName === productName);
 
     if (!isProductInCart) {
+    
       setCart((prevCart: CartItem[]) => [...prevCart, newProduct]);
-      setIsAdded(true); // Активируем анимацию добавления
-      setTimeout(() => setIsAdded(false), 600); // Сброс анимации после 600 мс
+      setIsAdded(true); 
+      setTimeout(() => setIsAdded(false), 600); 
+      addProduct({
+        type: "ADD_PRODUCT",
+        payload: newProduct,
+      });
+
     } else {
       alert("Этот продукт уже в корзине!");
     }
@@ -71,6 +82,12 @@ const Card = styled.section`
   max-width: 18rem;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    &:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        border-color: black;  
+    }
 `;
 
 const ProductImage = styled.img`
