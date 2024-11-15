@@ -27,3 +27,8 @@ export const Description = styled(BaseFont)`
   font-size: 16px;
   color:${myGray};
 `
+export const SubtitleSmall = styled(BaseFont)`
+  color: ${myBlack};
+  font-weight:500;
+  font-size:20px;
+`

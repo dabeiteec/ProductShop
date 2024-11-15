@@ -1,84 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Title } from "../../../6_shared/text/titles";
+import { GreenButton, DefaultButton } from "../../../6_shared/button";
+import { SubtitleSmall } from "../../../6_shared/text/styled-text";
 
 export const ShopSubtitle: React.FC = () => {
+
+  const [activeSort, setActiveSort] = useState<string>("Default");
+  const buttons = [
+    { label: "Default", type: "Default" },
+    { label: "A-Z", type: "A-Z" },
+    { label: "List view", type: "List view" },
+  ];
+
   return (
     <Section>
       <LeftContainer>
-        <Title label='Produce'/>
+        <Title label="Produce" />
         <DateInfo>
-          <h6>Fresh</h6>
-          <span>— August 21, 2023</span>
+          <SubtitleSmall>
+            <b>Fresh</b>
+          </SubtitleSmall>
+          <SubtitleSmall>— August 21, 2023</SubtitleSmall>
         </DateInfo>
       </LeftContainer>
+      
       <ButtonContainer>
-        <ButtonDefault>Default</ButtonDefault>
-        <Button> A-Z </Button>
-        <Button> List view </Button>
+        {buttons.map((button) => (
+          activeSort === button.type ? (
+            <GreenButton
+              key={button.type}
+              label={button.label}
+              onClick={() => setActiveSort(button.type)}
+              fontSize={16}
+              borderRadius="20px"
+            />
+          ) : (
+            <DefaultButton
+              key={button.type}
+              label={button.label}
+              onClick={() => setActiveSort(button.type)}
+              fontSize={16}
+              borderRadius="20px"
+            />
+          )
+        ))}
       </ButtonContainer>
     </Section>
   );
 };
 
+// Стили
+
 const Section = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0 5rem; 
-  margin-top: 2rem; 
+  padding: 0 5rem;
+  margin-top: 2rem;
 `;
 
 const LeftContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
 `;
 
 const DateInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem; 
-  font-size: 0.875rem; 
-  color: #6b7280; 
-
-  h6 {
-    font-weight: 500; 
-  }
-
-  span {
-    color: #9ca3af; 
-  }
+  gap: 0.5rem;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  gap: 0.5rem; 
+  gap: 0.5rem;
 `;
-
-const Button = styled.button`
-  border: 1px solid #d1d5db; 
-  color: #000; 
-  padding: 0.5rem 1rem; 
-  border-radius: 9999px; 
-  outline: none;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: #f3f4f6;
-  }
-`;
-
-const ButtonDefault = styled(Button)`
-  background-color: #426B1F; 
-  color: white;
-
-  &:hover {
-    background-color: #5c9b25; 
-  }
-`;
-

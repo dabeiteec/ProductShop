@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaMinus, FaPen } from "react-icons/fa";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { myBeige } from "../../6_shared/colors";
+import { FatInter20, FatInerGreen20 } from "../../6_shared/text/styled-text";
 
 interface ShopCardProps {
   productName: string;
@@ -19,20 +21,16 @@ export const BasketCard: React.FC<ShopCardProps> = ({
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
 
-  const calculateFinalPrice = () => {
-    return (productPrice * productQuantity).toFixed(2);
-  };
+  const calculateFinalPrice = () => (productPrice * productQuantity).toFixed(2);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
-    if (value > 0) {
-      setProductQuantity(value);
-    }
+    if (value > 0) setProductQuantity(value);
   };
 
   useEffect(() => {
     dispatch({
-      type: 'SET_PRODUCT_PRICE',
+      type: "SET_PRODUCT_PRICE",
       payload: { productName, productPrice, productQuantity },
     });
   }, [dispatch, productPrice, productQuantity, productName]);
@@ -54,14 +52,19 @@ export const BasketCard: React.FC<ShopCardProps> = ({
           <ProductPrice>
             ${productPrice} <PriceUnit>/ lb</PriceUnit>
           </ProductPrice>
+          <QuantityControl>
+            <QuantityInput
+              type="number"
+              value={productQuantity}
+              min="1"
+              onChange={handleQuantityChange}
+            />
+            <FaPen className="edit-icon" />
+          </QuantityControl>
         </ProductDetails>
       </ProductInfo>
       <PriceSection>
         <FinalPrice>${calculateFinalPrice()}</FinalPrice>
-        <QuantityControl>
-          <QuantityInput type="number" value={productQuantity} min="1" onChange={handleQuantityChange} />
-          <FaPen className="edit-icon" />
-        </QuantityControl>
       </PriceSection>
       <RemoveButton onClick={handleRemove}>
         <FaMinus />
@@ -70,11 +73,10 @@ export const BasketCard: React.FC<ShopCardProps> = ({
   );
 };
 
-
 // Styled components
 const Card = styled.section`
   padding: 1rem;
-  background-color: white;
+  background-color: ${myBeige};
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -84,7 +86,6 @@ const Card = styled.section`
   justify-content: space-between;
 `;
 
-// Other styled components below remain unchanged
 const ProductInfo = styled.div`
   display: flex;
   align-items: center;
@@ -98,22 +99,17 @@ const ProductImage = styled.img`
 `;
 
 const ProductDetails = styled.div`
-  padding-left: 1rem;
+  padding-left: 0;
+  padding-left: 0.5rem;
 `;
 
-const ProductName = styled.span`
+const ProductName = styled(FatInter20)`
   display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
   text-transform: capitalize;
 `;
 
-const ProductPrice = styled.span`
+const ProductPrice = styled(FatInerGreen20)`
   display: block;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #16a34a;
 `;
 
 const PriceUnit = styled.span`
@@ -136,22 +132,33 @@ const FinalPrice = styled.span`
 const QuantityControl = styled.div`
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.875rem;
   background-color: #f3f4f6;
   padding: 0.5rem;
   border-radius: 0.375rem;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const QuantityInput = styled.input`
-  width: 3rem;
+  flex-grow: 1;
+  height: 100%;
   text-align: center;
-  border: 1px solid #d1d5db;
+  border: none;
+  background-color: transparent;
   border-radius: 0.375rem;
+  font-size: inherit;
+  padding: 0.25rem 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
 `;
 
 const RemoveButton = styled.button`
   position: absolute;
+  border: none;
   top: 0.5rem;
   right: 0.5rem;
   background-color: #dc2626;

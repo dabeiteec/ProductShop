@@ -1,56 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { myGreen, myHoverGreen, myWhite, myHoverWhite,myBlack } from './colors';
+import { myGreen, myHoverGreen, myWhite, myHoverWhite, myBlack, myGray } from './colors';
+import { Inter } from './text/font-family';
+
 interface ButtonProps {
   label: string;
   onClick?: () => void;
-  fontSize?: number; 
+  fontSize: number;
+  borderRadius: string; 
 }
 
-export const GreenButton: React.FC<ButtonProps> = ({ label, onClick, fontSize }) => {
+export const GreenButton: React.FC<ButtonProps> = ({ label, onClick, fontSize,borderRadius }) => {
   return (
-    <StyledGreenButton onClick={onClick} fontSize={fontSize}>
+    <StyledGreenButton onClick={onClick} fontSize={fontSize} borderRadius={borderRadius}>
       {label}
     </StyledGreenButton>
   );
 };
 
-export const DefaultButton: React.FC<ButtonProps> = ({ label, onClick, fontSize }) => {
+export const DefaultButton: React.FC<ButtonProps> = ({ label, onClick, fontSize, borderRadius }) => {
   return (
-    <StyledDefaultButton onClick={onClick} fontSize={fontSize}>
+    <StyledDefaultButton onClick={onClick} fontSize={fontSize} borderRadius={borderRadius}>
       {label}
     </StyledDefaultButton>
   );
 };
 
-const StyledGreenButton = styled.button<{ fontSize?: number }>`
+
+const BaseButton = styled.button<{ fontSize?: number; borderRadius?: string }>`
   display: inline-flex;
-  font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : '16px')}; 
-  font-weight: 600;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
+  font-family:${Inter}, serif;
+  font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : '16px')};
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: ${(props) => props.borderRadius || '0.25rem'};
+`;
+
+const StyledGreenButton = styled(BaseButton)`
   color: ${myWhite};
-  background-color: ${myGreen}; 
-  transition: background-color 0.3s;
-  
+  background-color: ${myGreen};
+
   &:hover {
-    color: #dbdbdb;
-    background-color: ${myHoverGreen}; 
+    color: ${myHoverWhite};
+    background-color: ${myHoverGreen};
   }
 `;
 
-const StyledDefaultButton = styled.button<{ fontSize?: number }>`
-  display: inline-flex;
-  font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : '16px')}; 
-  font-weight: 600;
-  padding: 0.5rem 1rem;
+const StyledDefaultButton = styled(BaseButton)`
   color: ${myBlack};
   background-color: transparent;
-  transition: background-color 0.3s;
-  
+  border:1px ${myGray} solid;
   &:hover {
-    color:  ${myHoverWhite};
-    background-color: ${myHoverGreen}; 
+    color: ${myHoverWhite};
+    background-color: ${myHoverGreen};
   }
 `;

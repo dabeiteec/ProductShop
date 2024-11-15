@@ -16,10 +16,11 @@ export const BasketMain: React.FC = () => {
     </Section>
     );
 };
-const Section = styled.section`
+const Section = styled.main`
   display: flex;
   flex-direction: row;
-  gap: 1.5rem; 
+  justify-content:space-evenly;
+  gap: 5rem; 
   padding: 1rem;
   max-width: 1200px; 
   margin: 0 auto;

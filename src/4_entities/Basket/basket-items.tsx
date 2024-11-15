@@ -49,6 +49,6 @@ export const BasketItems: React.FC = () => {
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem; 
+      gap: 2rem; 
       padding: 1rem; 
     `;
