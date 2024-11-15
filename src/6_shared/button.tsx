@@ -7,14 +7,16 @@ import { Inter } from './text/font-family';
 interface ButtonProps {
   label: string;
   onClick?: () => void;
-  fontSize: number;
-  borderRadius: string; 
+  fontSize?: number;
+  borderRadius?: string; 
+  element?:JSX.Element;
 }
 
-export const GreenButton: React.FC<ButtonProps> = ({ label, onClick, fontSize,borderRadius }) => {
+export const GreenButton: React.FC<ButtonProps> = ({ label, onClick, fontSize,borderRadius,element }) => {
   return (
     <StyledGreenButton onClick={onClick} fontSize={fontSize} borderRadius={borderRadius}>
       {label}
+      {element && element}
     </StyledGreenButton>
   );
 };

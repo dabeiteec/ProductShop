@@ -2,6 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootState } from '../../6_shared/redux/redux-store';
+import { FatInter20,OrderText } from '../../6_shared/text/styled-text';
+import { GreenButton } from '../../6_shared/button';
+import { myBeige, myGray } from '../../6_shared/colors';
 
 export const OrderSummary: React.FC = () => {
 
@@ -17,40 +20,37 @@ export const OrderSummary: React.FC = () => {
     <Container>
       <Title>Order summary</Title>
       <SummaryRow>
-        <span>Subtotal</span>
-        <span>${getTotalPrice}</span>
+        <OrderText>Subtotal</OrderText>
+        <OrderText>${getTotalPrice}</OrderText>
       </SummaryRow>
       <SummaryRow>
-        <span>Shipping</span>
-        <span>${additionalExpenses.Shipping}</span>
+        <OrderText>Shipping</OrderText>
+        <OrderText>${additionalExpenses.Shipping}</OrderText>
       </SummaryRow>
       <SummaryRow>
-        <span>Tax</span>
-        <span>${additionalExpenses.Tax}</span>
+        <OrderText>Tax</OrderText>
+        <OrderText>${additionalExpenses.Tax}</OrderText>
       </SummaryRow>
       <TotalRow>
-        <span>Total</span>
-        <span>${fixedPrice}</span>
+        <OrderText><b>Total</b></OrderText>
+        <OrderText><b>${fixedPrice}</b></OrderText>
       </TotalRow>
-      <ContinueButton>
-        Continue to payment
-        <span className="arrow">→</span>
-      </ContinueButton>
+      <GreenButton label="Continue to payment" element={<span className="arrow">→</span>}/>
     </Container>
   );
 };
 
-// Styled components
-
 const Container = styled.aside`
-  background-color: white;
-  border-radius: 0.5rem;
+  border:1px ${myGray} solid;
+  background-color: ${myBeige};
+  border-radius: 1.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   max-width: 24rem;
+  position:fixed;
 `;
 
-const Title = styled.h2`
+const Title = styled(FatInter20)`
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;

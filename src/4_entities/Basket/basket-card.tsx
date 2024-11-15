@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaMinus, FaPen } from "react-icons/fa";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { myBeige } from "../../6_shared/colors";
+import { myBeige, myGray } from "../../6_shared/colors";
 import { FatInter20, FatInerGreen20 } from "../../6_shared/text/styled-text";
 
 interface ShopCardProps {
@@ -75,9 +75,9 @@ export const BasketCard: React.FC<ShopCardProps> = ({
 
 // Styled components
 const Card = styled.section`
-  padding: 1rem;
+  border:1px ${myGray} solid;
   background-color: ${myBeige};
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   position: relative;
@@ -89,13 +89,14 @@ const Card = styled.section`
 const ProductInfo = styled.div`
   display: flex;
   align-items: center;
+  height:inherit;
 `;
-
+//TODO разобраться с картинками
 const ProductImage = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 30%;
+  height: auto;
   object-fit: cover;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
 `;
 
 const ProductDetails = styled.div`

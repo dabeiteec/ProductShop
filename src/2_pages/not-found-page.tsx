@@ -1,9 +1,23 @@
 import React from "react";
+import styled from "styled-components";
+import { Title } from "../6_shared/text/titles";
+import { myGreen } from "../6_shared/colors";
+
+const NotFoundWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const NotFoundText = styled(Title)`
+  color: ${myGreen}; /* соответствует text-green-800 */
+`;
 
 export const NotFound: React.FC = () => {
-    return (
-        <div className="flex items-center justify-center h-screen">
-            <h1 className="text-3xl font-bold text-green-800">Not Found</h1>
-        </div>
-    );
+  return (
+    <NotFoundWrapper>
+      <Title label="Not Found"/>
+    </NotFoundWrapper>
+  );
 };
