@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootState } from '../../6_shared/redux/redux-store';
@@ -12,10 +12,7 @@ export const OrderSummary: React.FC = () => {
   }
   const setTotal = getTotalPrice + additionalExpenses.Tax + additionalExpenses.Shipping;
   const fixedPrice = setTotal.toFixed(2);
-  // useEffect(()=>{
-  //   setTotal.toFixed(2)
-  // })
-  // const fixedPrice = ;
+
   return (
     <Container>
       <Title>Order summary</Title>
@@ -45,7 +42,7 @@ export const OrderSummary: React.FC = () => {
 
 // Styled components
 
-const Container = styled.div`
+const Container = styled.aside`
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

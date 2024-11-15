@@ -4,18 +4,18 @@ import styled from "styled-components";
 export const TextContainer: React.FC = () => {
   return (
     <Container>
-      <h3>WHAT WE BELIEVE</h3>
+      <FatText style={{fontWeight:600}}>WHAT WE BELIEVE</FatText>
       <div className="about_product">
-        <p>We believe in produce. Tasty produce. Produce like:</p>
-        <p>
+        <FatText>We believe in produce. Tasty produce. Produce like:</FatText>
+        <FatText>
           Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas.
           Cauliflowers. Brussels sprouts. Shallots. Japanese eggplants.
           Asparagus. Artichokes—Jerusalem artichokes, too. Radishes. Broccoli.
           Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries.
           Raspberries. Cilantro. Parsley. Dill.
-        </p>
-        <p>What are we forgetting?</p>
-        <p>
+        </FatText>
+        <FatText>What are we forgetting?</FatText>
+        <FatText>
           Oh! Onions. Yams. Avocados. Lettuce. Arugula (to some, “rocket”).
           Persian cucumbers, in addition to aforementioned “normal” cucumbers.
           Artichokes. Zucchinis. Pumpkins. Squash (what some cultures call
@@ -25,12 +25,17 @@ export const TextContainer: React.FC = () => {
           tomatoes. Beets. Chives. Corn. Endive. Escarole, which, we swear,
           we’re vendors of organic produce, but if you asked us to describe what
           escaroles are...
-        </p>
+        </FatText>
       </div>
     </Container>
   );
 };
-
+const FatText = styled.p`
+  font-family:"Inter", serif;
+  color:black;
+  font-weight:400;
+  font-size:20px;
+`;
 const Container = styled.div`
   max-width: 768px; /* max-w-3xl */
   margin: 0 auto; /* mx-auto */

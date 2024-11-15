@@ -5,4 +5,6 @@ export const myHoverWhite = '#dbdbdb';
 export const myGray = '#6D6D6D';
 export const myBlack = '#000000'
 //бежевый
-export const myBeige = '#E6E6E6';
+export const myBeige = '#FAFAF5';
+// бордер радиус чето типо серого
+export const lightGray = '#E6E6E6'

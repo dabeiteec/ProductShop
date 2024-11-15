@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa6";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { myBeige,lightGray } from "../../6_shared/colors";
+import { FatInter20,FatInerGreen20,Description } from "../../6_shared/text/styled-text";
 
 interface ShopCardProps {
   productName: string;
@@ -31,7 +33,6 @@ export const ShopCard: React.FC<ShopCardProps> = ({
   const [isAdded, setIsAdded] = useState(false); 
 
   const addProduct = useDispatch();
-  const setTotalPrice = useDispatch();
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -66,7 +67,7 @@ export const ShopCard: React.FC<ShopCardProps> = ({
             ${productPrice} <span>/ lb</span>
           </ProductPrice>
         </ProductDetails>
-        <ProductOrigin>{productFrom}</ProductOrigin>
+        <ProductFrom>{productFrom}</ProductFrom>
       </ProductInfo>
       <AddButton onClick={addToCart} isAdded={isAdded}>
         <FaPlus />
@@ -75,8 +76,9 @@ export const ShopCard: React.FC<ShopCardProps> = ({
   );
 };
 
-const Card = styled.section`
-  background-color: white;
+const Card = styled.article`
+  background-color: ${myBeige};
+  border:2px ${lightGray} solid;
   border-radius: 0.5rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 18rem;
@@ -86,7 +88,7 @@ const Card = styled.section`
     &:hover {
         transform: translateY(-10px) scale(1.05);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        border-color: black;  
+        border-color: black; 
     }
 `;
 
@@ -107,31 +109,16 @@ const ProductDetails = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const ProductName = styled.span`
-  display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #2d3748;
+const ProductName = styled(FatInter20)`
   text-transform: capitalize;
 `;
 
-const ProductPrice = styled.span`
+const ProductPrice = styled(FatInerGreen20)`
   display: block;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #2f855a;
-
-  span {
-    font-size: 0.875rem;
-    color: #a0aec0;
-  }
 `;
-
-const ProductOrigin = styled.span`
+const ProductFrom = styled(Description)`
   display: block;
-  font-size: 0.875rem;
-  color: #a0aec0;
-`;
+`
 
 const AddButton = styled.button<{ isAdded: boolean }>`
   position: absolute;
@@ -140,6 +127,7 @@ const AddButton = styled.button<{ isAdded: boolean }>`
   background-color: #2f855a;
   color: white;
   padding: 0.5rem;
+  border:none;
   border-radius: 50%;
   display: flex;
   align-items: center;

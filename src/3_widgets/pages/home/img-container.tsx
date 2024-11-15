@@ -2,6 +2,7 @@ import React from "react";
 import mainImg from './assets/left-img.png';
 import subMainImg from './assets/right-img.png';
 import styled from "styled-components";
+import { ImgContainerText } from "../../../6_shared/text/styled-text";
 
 export const ImgContainer: React.FC = () => {
   return (
@@ -10,15 +11,17 @@ export const ImgContainer: React.FC = () => {
       <RightContainer>
         <img src={subMainImg} alt="some vegetables" />
         <AboutImg>
-          <b>Central California</b> — The person who grew these was located in
+          <ImgContainerText>
+          <strong>Central California</strong> — The person who grew these was located in
           Central California and, er, hopefully very well-compensated.
+          </ImgContainerText>
         </AboutImg>
       </RightContainer>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -65,8 +68,6 @@ const RightContainer = styled.div`
 
 const AboutImg = styled.span`
   margin-top: 0.5rem;
-  color: #333333; /* Adjust color as needed */
-  font-size: 1rem;
   line-height: 1.5;
   
 `;

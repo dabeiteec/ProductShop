@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { Title } from "../../../6_shared/text/titles";
 
 export const ShopSubtitle: React.FC = () => {
   return (
     <Section>
       <LeftContainer>
-        <h1>Produce</h1>
+        <Title label='Produce'/>
         <DateInfo>
           <h6>Fresh</h6>
           <span>— August 21, 2023</span>

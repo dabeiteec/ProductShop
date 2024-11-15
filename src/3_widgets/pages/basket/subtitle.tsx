@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../6_shared/redux/redux-store";
+import { Title } from "../../../6_shared/text/titles";
+import { myGray } from "../../../6_shared/colors";
 
 const BasketSubtitle: React.FC = () => {
     const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const BasketSubtitle: React.FC = () => {
     return (
         <Section>
             <TitleContainer>
-                <Title>Basket</Title>
+                <Title label='Basket'/>
                 <ItemCount>item {setAmountItems}</ItemCount>
             </TitleContainer>
         </Section>
@@ -28,22 +30,20 @@ const Section = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5rem;
     margin-top: 2rem;
+    margin: 0 5rem 0 ;
+    border-bottom: 1px ${myGray} solid;
+    /*TODO ПОСМОТРЕТЬ МАКЕТ ФИГМЫ, ТАМ СНИЗУ ТЕНЬ */
 `;
 
 const TitleContainer = styled.div`
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 1rem;
 `;
-
-const Title = styled.h1`
-    font-size: 1.875rem;
-    font-family: serif;
-    font-weight: bold;
-`;
-
+ /*TODO ПРИЖАТЬ ИТЕМЫ К НИЗУ */
 const ItemCount = styled.h6`
-    font-weight: 500;
+    font-family:'Inter',serif;
+    font-size:20px;
+    font-weight: 300;
 `;
