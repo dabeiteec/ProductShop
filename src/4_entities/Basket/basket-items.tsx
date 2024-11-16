@@ -25,7 +25,7 @@ export const BasketItems: React.FC = () => {
     const handleRemoveProduct = (productName: string) => {
         const updatedCart = cart.filter(product => product.productName !== productName);
         setCart(updatedCart);
-        localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+        // localStorage.setItem('cart', JSON.stringify(updatedCart)); 
     };
 
     return (

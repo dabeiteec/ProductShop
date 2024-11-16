@@ -34,9 +34,9 @@ export const ShopCard: React.FC<ShopCardProps> = ({
 
   const addProduct = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
 
   const addToCart = () => {
     const newProduct: CartItem = { productName, productPrice, productImg, productFrom };
@@ -119,15 +119,17 @@ const ProductPrice = styled(FatInerGreen20)`
 const ProductFrom = styled(Description)`
   display: block;
 `
-
-const AddButton = styled.button<{ isAdded: boolean }>`
+const AddButton = styled.button.attrs<{ isAdded: boolean }>((props) => ({
+  // Проп удаляется из DOM и используется только для стилизации
+  isAdded: undefined, 
+}))<{ isAdded: boolean }>`
   position: absolute;
   top: 1rem;
   right: 1rem;
   background-color: #2f855a;
   color: white;
   padding: 0.5rem;
-  border:none;
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -140,7 +142,8 @@ const AddButton = styled.button<{ isAdded: boolean }>`
   }
 
   ${(props) =>
-    props.isAdded &&`
+    props.isAdded &&
+    `
     transform: scale(1.2);
     animation: scaleUp 0.3s ease-out, scaleDown 0.3s ease-out 0.3s forwards;
   `}
