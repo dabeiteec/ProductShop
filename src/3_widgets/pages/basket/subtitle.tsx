@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../6_shared/redux/redux-store";
+//TODO import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "../../../6_shared/redux/redux-store";
 import { Title } from "../../../6_shared/text/titles";
 import { myGray } from "../../../6_shared/colors";
 
 const BasketSubtitle: React.FC = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const setAmountItems = useSelector((state: RootState) => state.arr.productAmount);
+    // const setAmountItems = useSelector((state: RootState) => state.arr.productAmount);
 
-    useEffect(() => {
-        dispatch({ type: 'GET_PRODUCT_AMOUNT' }); 
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch({ type: 'GET_PRODUCT_AMOUNT' }); 
+    // }, [dispatch]);
 
     return (
         <Section>
             <TitleContainer>
                 <Title label='Basket'/>
-                <ItemCount>item {setAmountItems}</ItemCount>
+                {/* <ItemCount>item {setAmountItems}</ItemCount> */}
             </TitleContainer>
         </Section>
     );

@@ -1,59 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { myBeige,lightGray } from "../../6_shared/colors";
-import { FatInter20,FatInerGreen20,Description } from "../../6_shared/text/styled-text";
+// TODO import { useDispatch, useSelector } from "react-redux";
+import { myBeige, lightGray } from "../../6_shared/colors";
+import { FatInter20, FatInerGreen20, Description } from "../../6_shared/text/styled-text";
+import { createBasketItem } from "../../4_entities/Shop/api";
 
 interface ShopCardProps {
+  productId: number;
   productName: string;
   productPrice: number;
   productImg: string;
   productFrom: string;
-}
-
-interface CartItem {
-  productName: string;
-  productPrice: number;
-  productImg: string;
-  productFrom: string;
+  userId: number;
 }
 
 export const ShopCard: React.FC<ShopCardProps> = ({
+  productId,
   productName,
   productPrice,
   productImg,
   productFrom,
+  userId,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [isAdded, setIsAdded] = useState(false); // состояние для анимации кнопки
+  const token = localStorage.getItem("token"); // получаем токен из localStorage
 
-  const [isAdded, setIsAdded] = useState(false); 
+  const addToBasket = async () => {
+    if (token) {
+      try {
+        // const newProduct = { productId, productName, productPrice, productImg, productFrom };
+        const response = await createBasketItem(productId); // передаем токен в запрос
 
-  const addProduct = useDispatch();
-
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-  // }, [cart]);
-
-  const addToCart = () => {
-    const newProduct: CartItem = { productName, productPrice, productImg, productFrom };
-    const isProductInCart = cart.some((product) => product.productName === productName);
-
-    if (!isProductInCart) {
-    
-      setCart((prevCart: CartItem[]) => [...prevCart, newProduct]);
-      setIsAdded(true); 
-      setTimeout(() => setIsAdded(false), 600); 
-      addProduct({
-        type: "ADD_PRODUCT",
-        payload: newProduct,
-      });
-
+        if (response) {
+          setIsAdded(true); // меняем состояние, чтобы анимировать кнопку
+          setTimeout(() => setIsAdded(false), 600); // сбрасываем анимацию через 600ms
+        }
+      } catch (error) {
+        console.error("Ошибка при добавлении в корзину", error);
+      }
     } else {
-      alert("Этот продукт уже в корзине!");
+      alert("Пожалуйста, войдите в систему");
     }
   };
 
@@ -69,7 +56,7 @@ export const ShopCard: React.FC<ShopCardProps> = ({
         </ProductDetails>
         <ProductFrom>{productFrom}</ProductFrom>
       </ProductInfo>
-      <AddButton onClick={addToCart} isAdded={isAdded}>
+      <AddButton onClick={addToBasket} isAdded={isAdded}>
         <FaPlus />
       </AddButton>
     </Card>
@@ -78,18 +65,18 @@ export const ShopCard: React.FC<ShopCardProps> = ({
 
 const Card = styled.article`
   background-color: ${myBeige};
-  border:2px ${lightGray} solid;
+  border: 2px ${lightGray} solid;
   border-radius: 0.5rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 18rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    &:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        border-color: black; 
-    }
+  &:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: black;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -116,12 +103,13 @@ const ProductName = styled(FatInter20)`
 const ProductPrice = styled(FatInerGreen20)`
   display: block;
 `;
+
 const ProductFrom = styled(Description)`
   display: block;
-`
+`;
+
 const AddButton = styled.button.attrs<{ isAdded: boolean }>((props) => ({
-  // Проп удаляется из DOM и используется только для стилизации
-  isAdded: undefined, 
+  isAdded: undefined,
 }))<{ isAdded: boolean }>`
   position: absolute;
   top: 1rem;

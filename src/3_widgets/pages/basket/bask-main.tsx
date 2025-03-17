@@ -1,6 +1,6 @@
 import React from "react";
-import{ BasketItems } from '../../../4_entities/Basket/basket-items.js'
-import { OrderSummary } from "../../../5_features/Basket/calculate.js";
+import BasketItems  from '../../../4_entities/Basket/basket-items.js'
+// import { OrderSummary } from "../../../5_features/Basket/calculate.js";
 import styled from 'styled-components';
 
 export const BasketMain: React.FC = () => {
@@ -11,7 +11,7 @@ export const BasketMain: React.FC = () => {
             <BasketItems />
         </BasketContainer>
         <SummaryContainer className="w-1/4">
-            <OrderSummary />
+            {/* <OrderSummary /> */}
         </SummaryContainer>
     </Section>
     );
