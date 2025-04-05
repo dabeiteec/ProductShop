@@ -11,13 +11,13 @@ const NotFoundWrapper = styled.div`
 `;
 
 const NotFoundText = styled(Title)`
-  color: ${myGreen}; /* соответствует text-green-800 */
+  color: ${myGreen};
 `;
 
 export const NotFound: React.FC = () => {
   return (
     <NotFoundWrapper>
-      <Title label="Not Found"/>
+      <NotFoundText label="Not Found"/>
     </NotFoundWrapper>
   );
 };
