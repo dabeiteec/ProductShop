@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+СДЕЛАНО
+### 1 ###
+!!СДЕЛАНО!!
+Настройка проекта на правильную фронт архитектуру
+### 2 ###
+!!СДЕЛАНО!!
+Вынести страницы в отдельную папку
+### 4 ###
+!!СДЕЛАНО!!
+Решить проблему хедером(стили пропадают, кнопки уходят в инвиз)
+### 15 ###
+!!СДЕЛАНО!!
+Исправление зависимостей)
+### 12 ###
+!!СДЕЛАНО!!
+Перевести на стайлед компонент
+### 3 ###
+!!СДЕЛАНО!!
+Внедрение редакса(если потребуется)
+### 13 ###
+!!СДЕЛАНО!!
+Довести до ума юайкид и добавить шрифты в апп
+### 16 ###
+!!СДЕЛАНО!!
+Метатеги и фавикон айкон
+### 17 ### 
+!!СДЕЛАНО!!
+Пофиксить баг с из аддед
+### 18 ### 
+!!!СДЕЛАНО!!!
+сделать предзагрузку редакс стора из локал стореджа
+==================
+БЭКЕНД
+### 7 ###
+Поднять сервак на ноде
+=======================================================================
+### 6 ###
+!!In Process!!
+Адаптивность, доступность, анимации, сео)
+### 19 ###
+!!In Process!!
+Доработать Метатеги и фавикон айкон
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+=======================================================================
+ФРОНТЕНД
+### 5 ###
+Разработать формочку для регистрации и авторизации)
+### 14 ### 
+Код ревью
+=======================================================================
 
-Currently, two official plugins are available:
+### 8 ###
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Прописать базовые апи(Пости запросы на Регистрацию, пост запрос на Авторизацию, Гет запрос на продукты, пост на  добавление продукта в корзину и тд)**
 
-## Expanding the ESLint configuration
+### 9 ###
+Базу данных через модельки
+### 10 ###
+========================================================================
+ХОСТ
+Найти бесплатный хостинг
+### 11 ###
+Билд и деплой
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Заметки!
+кароче проблемы с редаксом и удалением из корзины ибо при удалении удаляется из локал стореджа но не из редакса поэтому 
+количество итемов шалит, так же при добавлении в корзину продукт последний только туда добавляется
